@@ -7,11 +7,21 @@ import SpecialOffer from './sections/SpecialOffer';
 import Subscribe from './sections/Subscribe';
 import SuperQuality from './sections/SuperQuality';
 import Nav from './components/Nav';
+import MobileNav from './components/MobileNav';
+import { useState } from 'react';
 
 const App = () => {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const handleClick = () => {
+    if(isCollapsed) {
+      setIsCollapsed(false)
+    } else {
+      setIsCollapsed(true)
+    }
+  }
   return (
     <main className="relative">
-      <Nav />
+      {!isCollapsed ? <Nav handleClick={handleClick}/> : <MobileNav handleClick={handleClick} />}
 
       {/* HERO SECTION */}
       <section className="xl:padding-l wide:padding-r padding:b">
